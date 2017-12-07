@@ -72,6 +72,8 @@ PRODUCT_PACKAGES += \
     AntHalService \
     com.dsi.ant.antradio_library \
     libantradio
+PRODUCT_PACKAGES += \
+    android.hidl.base@1.0
 
 # Audio
 PRODUCT_PACKAGES += \
