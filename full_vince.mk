@@ -1,6 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
-#               2017 The LineageOS Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,16 +14,17 @@
 # limitations under the License.
 #
 
-$(call inherit-product, device/xiaomi/vince/full_vince.mk)
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit from vince device
+$(call inherit-product, device/xiaomi/vince/device.mk)
 
-PRODUCT_NAME := lineage_vince
-BOARD_VENDOR := Xiaomi
-
-PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=xiaomi/vince/vince:7.1.2/N2G47H/V9.2.3.0.NEGCNEK:user/release-keys \
-    PRIVATE_BUILD_DESC="vince-user 7.1.2 N2G47H V9.2.3.0.NEGCNEK release-keys"
+# Device identifier. This must come after all inclusions
+TARGET_VENDOR := Xiaomi
+PRODUCT_DEVICE := vince
+PRODUCT_NAME := full_vince
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := Redmi 5 Plus
+PRODUCT_MANUFACTURER := Xiaomi
