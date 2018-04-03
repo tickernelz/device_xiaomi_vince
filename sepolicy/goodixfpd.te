@@ -48,3 +48,5 @@ allow goodixfpd storage_file:dir search;
 allow goodixfpd storage_file:lnk_file read;
 r_dir_file(goodixfpd, firmware_file)
 allow goodixfpd tmpfs:dir search;
+allow goodixfpd mnt_user_file:lnk_file read;
+allow goodixfpd mnt_user_file:dir search;

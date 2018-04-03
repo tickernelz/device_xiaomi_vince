@@ -17,8 +17,8 @@
 /system/bin/goodixfingerprintd                  u:object_r:goodixfpd_exec:s0
 
 # Goodix Fingerprint data
-/data/system/fingerprint(/.*)?                  u:object_r:goodixfpd_data_file:s0
-/persist/data/gxfp(/.*)?                        u:object_r:goodixfpd_data_file:s0
+/data/gf_data/frr_database.db                   u:object_r:goodixfpd_data_file:s0 
+/persist/data/gf(/.*)?                          u:object_r:goodixfpd_data_file:s0
 
 # Ir
-/dev/lirc[0-9]*					u:object_r:lirc_device:s0
+/dev/peel_ir					u:object_r:peelir_device:s0
