@@ -1,49 +1,50 @@
-type gx_fpd, domain;
-type gx_fpd_exec, exec_type, file_type;
+type goodixfpd, domain;
+type goodixfpd_exec, exec_type, file_type;
 
-# gx_fpd
-init_daemon_domain(gx_fpd)
-binder_use(gx_fpd)
+# goodixfpd
+init_daemon_domain(goodixfpd)
+binder_use(goodixfpd)
 
 # need to find KeyStore and add self
-allow gx_fpd fingerprintd_service:service_manager { add find };
+allow goodixfpd fingerprintd_service:service_manager { add find };
 
 # allow HAL module to read dir contents
-allow gx_fpd gx_fpd_data_file:file create_file_perms;
+allow goodixfpd goodixfpd_data_file:file create_file_perms;
 
 # allow HAL module to read/write/unlink contents of this dir
-allow gx_fpd gx_fpd_data_file:dir create_dir_perms;
+allow goodixfpd goodixfpd_data_file:dir create_dir_perms;
 
 # Need to add auth tokens to KeyStore
-use_keystore(gx_fpd)
-allow gx_fpd keystore:keystore_key { add_auth };
+use_keystore(goodixfpd)
+allow goodixfpd keystore:keystore_key { add_auth };
 
 # For permissions checking
-binder_call(gx_fpd, system_server);
-allow gx_fpd permission_service:service_manager find;
+binder_call(goodixfpd, system_server);
+allow goodixfpd permission_service:service_manager find;
 
 #Allow access to goodix device
-allow gx_fpd gx_fpd_device:chr_file rw_file_perms;
+allow goodixfpd goodixfpd_device:chr_file rw_file_perms;
 
 #Allow access to tee device
-allow gx_fpd tee_device:chr_file rw_file_perms;
+allow goodixfpd tee_device:chr_file rw_file_perms;
 
 # Allow access to ion device
-allow gx_fpd ion_device:chr_file rw_file_perms;
+allow goodixfpd ion_device:chr_file rw_file_perms;
 
 #allow create socket
-allow gx_fpd self:socket create_socket_perms;
-allow gx_fpd self:{ netlink_socket netlink_generic_socket } create_socket_perms;
+allow goodixfpd self:socket create_socket_perms;
+allow goodixfpd self:{ netlink_socket netlink_generic_socket } create_socket_perms;
 
 #allow read/write property
-set_prop(gx_fpd, system_prop)
+set_prop(goodixfpd, system_prop)
 
-allow gx_fpd gx_fpd_service:service_manager { add find };
+allow goodixfpd goodixfpd_service:service_manager { add find };
 
-allow gx_fpd fingerprintd:binder { transfer call };
-allow gx_fpd fuse:dir search;
-allow gx_fpd fuse:file { getattr open append };
-allow gx_fpd self:capability dac_override;
-allow gx_fpd storage_file:dir search;
-allow gx_fpd storage_file:lnk_file read;
-r_dir_file(gx_fpd, firmware_file)
+allow goodixfpd fingerprintd:binder { transfer call };
+allow goodixfpd fuse:dir search;
+allow goodixfpd fuse:file { getattr open append };
+allow goodixfpd self:capability dac_override;
+allow goodixfpd storage_file:dir search;
+allow goodixfpd storage_file:lnk_file read;
+r_dir_file(goodixfpd, firmware_file)
+allow goodixfpd tmpfs:dir search;
