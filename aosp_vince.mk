@@ -20,9 +20,12 @@ $(call inherit-product, device/xiaomi/vince/full_vince.mk)
 # Inherit some common AOSP stuff.
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_ARCH := arm64
+TARGET_DENSITY := xxhdpi
 
 PRODUCT_NAME := aosp_vince
 BOARD_VENDOR := Xiaomi
+PRODUCT_DEVICE := vince
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
